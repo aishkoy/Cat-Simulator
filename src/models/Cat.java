@@ -48,6 +48,30 @@ public class Cat {
         return lifeStage;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public int getHungerLevel() {
+        return hungerLevel;
+    }
+
+    public int getMoodLevel() {
+        return moodLevel;
+    }
+
+    public int getHealthLevel() {
+        return healthLevel;
+    }
+
+    public int getAverage() {
+        return averageLivingStandard;
+    }
+
     @Override
     public String toString() {
         String ageString = switch (age) {
