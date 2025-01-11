@@ -31,4 +31,19 @@ public class CatManager {
 
         cats.add(new Cat(name, age, hungerLevel, moodLevel, healthLevel));
     }
+
+    public void feedCat(Cat cat) {
+        cat.getLifeStage().feedCat(cat);
+        cat.calculateAverageLivingStandard();
+    }
+
+    public void treatCat(Cat cat) {
+        cat.getLifeStage().treatCat(cat);
+        cat.calculateAverageLivingStandard();
+    }
+
+    public void playWithCat(Cat cat) {
+        cat.getLifeStage().playWithCat(cat);
+        cat.calculateAverageLivingStandard();
+    }
 }
