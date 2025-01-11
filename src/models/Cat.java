@@ -10,6 +10,7 @@ public class Cat {
     private int healthLevel;
     private int averageLivingStandard;
 
+    private transient boolean isActionPerformedToday;
     private final transient CatLifeStage lifeStage;
 
     public Cat(String name, int age, int hungerLevel, int moodLevel, int healthLevel) {
@@ -20,6 +21,7 @@ public class Cat {
         this.healthLevel = healthLevel;
         calculateAverageLivingStandard();
         this.lifeStage = determineCatLifeStage();
+        this.isActionPerformedToday = false;
     }
 
     public void calculateAverageLivingStandard() {
@@ -74,6 +76,14 @@ public class Cat {
 
     public boolean isCatAlive() {
         return healthLevel > 0;
+    }
+
+    public boolean isActionPerformedToday(){
+        return isActionPerformedToday;
+    }
+
+    public void setActionPerformedToday(boolean isActionPerformedToday) {
+        this.isActionPerformedToday = isActionPerformedToday;
     }
 
     @Override
