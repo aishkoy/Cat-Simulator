@@ -39,20 +39,26 @@ public class CatManager {
 
     public void feedCat(Cat cat) {
         cat.getLifeStage().feedCat(cat);
-        cat.calculateAverageLivingStandard();
-        cat.setActionPerformedToday(true);
+        performWithCat(cat);
     }
 
     public void treatCat(Cat cat) {
         cat.getLifeStage().treatCat(cat);
-        cat.calculateAverageLivingStandard();
-        cat.setActionPerformedToday(true);
+        performWithCat(cat);
     }
 
     public void playWithCat(Cat cat) {
         cat.getLifeStage().playWithCat(cat);
+        performWithCat(cat);
+    }
+
+    public void performWithCat(Cat cat) {
         cat.calculateAverageLivingStandard();
         cat.setActionPerformedToday(true);
+        if(!cat.isCatAlive()){
+            System.out.println("К сожалению кот умер.");
+            deleteCat(cat);
+        }
     }
 
     public void startNextDay(){
@@ -77,6 +83,7 @@ public class CatManager {
     public void deleteCat(Cat cat) {
         cats.remove(cat);
     }
+
 
     public void sortAndDisplayCats(Comparator<Cat> comparator, boolean isAscending) {
         if(cats.isEmpty()){

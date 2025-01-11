@@ -39,6 +39,7 @@ public enum CatLifeStage {
                 System.out.println("При игре кот случайно травмировался!");
                 cat.changeHealthLevel(-5);
                 cat.changeMoodLevel(-5);
+                return;
             }
             cat.changeHealthLevel(7);
             cat.changeMoodLevel(7);
@@ -81,6 +82,7 @@ public enum CatLifeStage {
                 System.out.println("При игре кот случайно травмировался!");
                 cat.changeHealthLevel(-7);
                 cat.changeMoodLevel(-7);
+                return;
             }
             cat.changeHealthLevel(5);
             cat.changeMoodLevel(5);
@@ -123,6 +125,7 @@ public enum CatLifeStage {
                 System.out.println("При игре кот случайно травмировался!");
                 cat.changeHealthLevel(-9);
                 cat.changeMoodLevel(-9);
+                return;
             }
             cat.changeHealthLevel(4);
             cat.changeMoodLevel(4);
@@ -141,6 +144,6 @@ public enum CatLifeStage {
 
     boolean isRiskPresent(){
         Random rand = new Random();
-        return rand.nextDouble() <= 0.20;
+        return rand.nextDouble() <= 1/3.0;
     }
 }

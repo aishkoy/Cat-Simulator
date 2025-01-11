@@ -17,7 +17,7 @@ public class UserIO {
     public void run() {
         System.out.println("\nДобро пожаловать в симулятор котов!");
         initializeCatsFields();
-        cm.sortAndDisplayCats(Comparator.comparing(Cat::getAverage), false);
+        displayCats();
         while (true) {
             showActionMenu();
             processMenuChoice();
@@ -54,13 +54,16 @@ public class UserIO {
     private void processMenuChoice() {
         int choice = IOManager.getValidInt("^[0-7]$", "Введите число: ");
         switch (choice) {
-            case 1 -> cm.sortAndDisplayCats(Comparator.comparing(Cat::getAverage), false);
+            case 1 -> displayCats();
             case 2 -> cm.createCat();
             case 3 -> interactWithCat("поиграть");
             case 4 -> interactWithCat("покормить");
-            case 5 -> interactWithCat("полечить");
+            case 5 -> interactWithCat("лечить");
             case 6 -> processSortMenu();
-            case 7 -> cm.startNextDay();
+            case 7 -> {
+                cm.startNextDay();
+                cm.sortAndDisplayCats(Comparator.comparing(Cat::getAverage), false);
+            }
             case 0 -> {
                 System.out.println("До свиданья");
                 System.exit(0);
@@ -146,4 +149,7 @@ public class UserIO {
         return IOManager.getValidInt("^[1-2]$", "Введите число: ") == 1;
     }
 
+    private void displayCats(){
+        cm.sortAndDisplayCats(Comparator.comparing(Cat::getAverage), false);
+    }
 }
