@@ -18,17 +18,43 @@ public class Cat {
         this.hungerLevel = hungerLevel;
         this.moodLevel = moodLevel;
         this.healthLevel = healthLevel;
-        this.averageLivingStandard = calculateAverageLivingStandard();
+        calculateAverageLivingStandard();
         this.lifeStage = determineCatLifeStage();
     }
 
-    private int calculateAverageLivingStandard() {
-        return (int) Math.round((moodLevel + healthLevel + hungerLevel) / 3.0);
+    public void calculateAverageLivingStandard() {
+        this.averageLivingStandard = (int) Math.round((moodLevel + healthLevel + hungerLevel) / 3.0);
     }
 
     private CatLifeStage determineCatLifeStage () {
         if( age < 6) return CatLifeStage.YOUNG;
         else if (age < 11) return CatLifeStage.ADULT;
         else return CatLifeStage.ELDER;
+    }
+
+    public void changeHungerLevel(int amount) {
+        hungerLevel = Math.max(Math.min(hungerLevel + amount, 100), 0);
+    }
+
+    public void changeMoodLevel(int amount) {
+        moodLevel = Math.max(Math.min(moodLevel + amount, 100), 0);
+    }
+
+    public void changeHealthLevel(int amount) {
+        healthLevel = Math.max(Math.min(healthLevel + amount, 100), 0);
+    }
+
+    public CatLifeStage getLifeStage() {
+        return lifeStage;
+    }
+
+    @Override
+    public String toString() {
+        String ageString = switch (age) {
+            case 1 -> "год";
+            case 2,3,4 -> "года";
+            default -> "лет";
+        };
+        return name + " : " + age + ageString;
     }
 }
