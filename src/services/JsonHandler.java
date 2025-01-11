@@ -13,7 +13,6 @@ import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 public class JsonHandler {
@@ -74,7 +73,7 @@ public class JsonHandler {
     private static void createFile(){
         String fileName = IOManager.getValidString("[a-zA-Z0-9._-]+", "Введите имя файла: ");
         String fullPath = DIRECTORY + fileName;
-        try(FileWriter fw = new FileWriter(fullPath)){
+        try(FileWriter _ = new FileWriter(fullPath)){
             System.out.println("Пустой файл " + fileName + " был успешно создан!");
             PATH = Paths.get(fullPath);
         } catch (IOException e){
