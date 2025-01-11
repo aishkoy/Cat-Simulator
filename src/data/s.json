@@ -1,0 +1,18 @@
+[
+  {
+    "name": "gfd",
+    "age": 14,
+    "hungerLevel": 26,
+    "moodLevel": 40,
+    "healthLevel": 41,
+    "averageLivingStandard": 36
+  },
+  {
+    "name": "asd",
+    "age": 12,
+    "hungerLevel": 65,
+    "moodLevel": 71,
+    "healthLevel": 74,
+    "averageLivingStandard": 70
+  }
+]

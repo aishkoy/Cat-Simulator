@@ -1,0 +1,10 @@
+[
+  {
+    "name": "cat",
+    "age": 12,
+    "hungerLevel": 23,
+    "moodLevel": 73,
+    "healthLevel": 30,
+    "averageLivingStandard": 42
+  }
+]

@@ -9,7 +9,7 @@ import java.util.List;
 public class UserIO {
     private static final CatManager cm = new CatManager();
     private static boolean useDefaultSort = true;
-    private static Comparator currentComparator = Comparator.comparing(Cat::getAverage);
+    private static Comparator<Cat> currentComparator = Comparator.comparing(Cat::getAverage);
     private static boolean currentAscending = false;
 
     public UserIO() {
