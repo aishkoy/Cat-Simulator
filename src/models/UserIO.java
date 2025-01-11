@@ -8,6 +8,9 @@ import java.util.List;
 
 public class UserIO {
     private static final CatManager cm = new CatManager();
+    private static boolean useDefaultSort = true;
+    private static Comparator currentComparator = Comparator.comparing(Cat::getAverage);
+    private static boolean currentAscending = false;
 
     public UserIO() {
         JsonHandler.readJson(IOManager.getValidString("[a-zA-Z0-9._-]+", "Введите имя файла (пример: something.json): "));
@@ -62,7 +65,7 @@ public class UserIO {
             case 6 -> processSortMenu();
             case 7 -> {
                 cm.startNextDay();
-                cm.sortAndDisplayCats(Comparator.comparing(Cat::getAverage), false);
+                displayCats();
             }
             case 0 -> {
                 System.out.println("До свиданья");
@@ -129,14 +132,21 @@ public class UserIO {
                 """);
 
         int choice = IOManager.getValidInt("^[1-6]$", "Введите число: ");
-        switch (choice){
-            case 1 -> cm.sortAndDisplayCats(Comparator.comparing(Cat::getName), isAscendingSort());
-            case 2 -> cm.sortAndDisplayCats(Comparator.comparing(Cat::getAge), isAscendingSort());
-            case 3 -> cm.sortAndDisplayCats(Comparator.comparing(Cat::getHealthLevel), isAscendingSort());
-            case 4 -> cm.sortAndDisplayCats(Comparator.comparing(Cat::getMoodLevel), isAscendingSort());
-            case 5 -> cm.sortAndDisplayCats(Comparator.comparing(Cat::getHungerLevel), isAscendingSort());
-            case 6 -> cm.sortAndDisplayCats(Comparator.comparing(Cat::getAverage), isAscendingSort());
+        currentAscending = isAscendingSort();
+
+        switch (choice) {
+            case 1 -> currentComparator = Comparator.comparing(Cat::getName);
+            case 2 -> currentComparator = Comparator.comparing(Cat::getAge);
+            case 3 -> currentComparator = Comparator.comparing(Cat::getHealthLevel);
+            case 4 -> currentComparator = Comparator.comparing(Cat::getMoodLevel);
+            case 5 -> currentComparator = Comparator.comparing(Cat::getHungerLevel);
+            case 6 -> currentComparator = Comparator.comparing(Cat::getAverage);
+            default -> throw new IllegalStateException("Неверный выбор сортировки");
         }
+
+        useDefaultSort = false;
+
+        displayCats();
     }
 
     private boolean isAscendingSort(){
@@ -149,7 +159,12 @@ public class UserIO {
         return IOManager.getValidInt("^[1-2]$", "Введите число: ") == 1;
     }
 
-    private void displayCats(){
-        cm.sortAndDisplayCats(Comparator.comparing(Cat::getAverage), false);
+
+    private void displayCats() {
+        if (useDefaultSort) {
+            cm.sortAndDisplayCats(Comparator.comparing(Cat::getAverage), false);
+        } else {
+            cm.sortAndDisplayCats(currentComparator, currentAscending);
+        }
     }
 }
