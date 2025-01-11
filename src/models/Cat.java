@@ -11,7 +11,7 @@ public class Cat {
     private int averageLivingStandard;
 
     private transient boolean isActionPerformedToday;
-    private final transient CatLifeStage lifeStage;
+    private transient CatLifeStage lifeStage;
 
     public Cat(String name, int age, int hungerLevel, int moodLevel, int healthLevel) {
         this.name = name;
@@ -28,7 +28,7 @@ public class Cat {
         this.averageLivingStandard = (int) Math.round((moodLevel + healthLevel + hungerLevel) / 3.0);
     }
 
-    private CatLifeStage determineCatLifeStage () {
+    public CatLifeStage determineCatLifeStage () {
         if( age < 6) return CatLifeStage.YOUNG;
         else if (age < 11) return CatLifeStage.ADULT;
         else return CatLifeStage.ELDER;
@@ -89,10 +89,10 @@ public class Cat {
     @Override
     public String toString() {
         String ageString = switch (age) {
-            case 1 -> "год";
-            case 2,3,4 -> "года";
-            default -> "лет";
+            case 1 -> " год";
+            case 2,3,4 -> " года";
+            default -> " лет";
         };
-        return name + " : " + age + ageString;
+        return name + " - " + age + ageString;
     }
 }

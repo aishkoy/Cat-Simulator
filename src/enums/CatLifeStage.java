@@ -136,7 +136,7 @@ public enum CatLifeStage {
     public abstract void playWithCat(Cat cat);
 
     void  printAction(String message, Cat cat) {
-        System.out.println("Вы " + message + "Кот: " + cat );
+        System.out.println("Вы " + message + " (" + cat + ")");
     }
 
     boolean isRiskPresent(){

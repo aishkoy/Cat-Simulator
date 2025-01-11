@@ -39,9 +39,9 @@ public class JsonHandler {
 
     }
 
-    public static void writeJson(){
+    public static void writeJson(List<Cat> cats){
         try{
-            String newJson = GSON.toJson(catList, TYPE);
+            String newJson = GSON.toJson(cats, TYPE);
             Files.write(PATH, newJson.getBytes());
         } catch (IOException e) {
             System.out.println("Произошла ошибка при записи файла: " + e.getMessage());
