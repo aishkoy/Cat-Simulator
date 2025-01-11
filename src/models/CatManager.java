@@ -3,6 +3,7 @@ package models;
 import services.IOManager;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -60,7 +61,11 @@ public class CatManager {
                 Характеристики котов были изменены""");
     }
 
-    public void printCats() {
+    public void deleteCat(Cat cat) {
+        cats.remove(cat);
+    }
+
+    public void sortAndDisplayCats(Comparator<Cat> comparator, boolean isAscending) {
         if(cats.isEmpty()){
             System.out.println("Список котов пуст! Добавьте котов!");
             return;

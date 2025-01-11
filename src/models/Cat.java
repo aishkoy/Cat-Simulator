@@ -72,6 +72,10 @@ public class Cat {
         return averageLivingStandard;
     }
 
+    public boolean isCatAlive() {
+        return healthLevel > 0;
+    }
+
     @Override
     public String toString() {
         String ageString = switch (age) {
