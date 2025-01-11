@@ -28,6 +28,10 @@ public class Cat {
         this.averageLivingStandard = (int) Math.round((moodLevel + healthLevel + hungerLevel) / 3.0);
     }
 
+    public void setLifeStage(CatLifeStage lifeStage) {
+        this.lifeStage = lifeStage;
+    }
+
     public CatLifeStage determineCatLifeStage () {
         if( age < 6) return CatLifeStage.YOUNG;
         else if (age < 11) return CatLifeStage.ADULT;
