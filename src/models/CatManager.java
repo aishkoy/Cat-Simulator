@@ -46,4 +46,17 @@ public class CatManager {
         cat.getLifeStage().playWithCat(cat);
         cat.calculateAverageLivingStandard();
     }
+
+    public void startNextDay(){
+        for(Cat cat : cats){
+            cat.changeHungerLevel(-5 + (int)(Math.random() * (5)));
+            cat.changeMoodLevel( -3 + (int)(Math.random() * 7));
+            cat.changeHealthLevel( -3 + (int)(Math.random() * 7));
+            cat.calculateAverageLivingStandard();
+        }
+
+        System.out.println("""
+                Настал новый день!
+                Характеристики котов были изменены""");
+    }
 }
